@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ウォーミングアップと音色づくり</title>
+
+<!-- ▼ 公開後、ユーザー名を書き換えてください -->
+<meta name="description" content="週末しか楽器を吹けなくても上達するために。ウォーミングアップの組み立て方と、Song and Windを軸にした音色づくりの考え方をまとめました。">
+<meta name="theme-color" content="#A8842F">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="練習ノート">
+<meta property="og:title" content="ウォーミングアップと音色づくり">
+<meta property="og:description" content="週末しか楽器を吹けなくても上達するために。ウォーミングアップの組み立て方と、Song and Windを軸にした音色づくりの考え方をまとめました。">
+<meta property="og:url" content="https://ユーザー名.github.io/warmup-tone/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- ▲ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF9F4;
+    --card:#FFFDF8;
+    --ink:#20262A;
+    --sub:#5C666B;
+    --brass:#A8842F;
+    --brass-deep:#8C6C22;
+    --brass-soft:#C9A75C;
+    --brass-pale:#EFE7D2;
+    --line:#DDD9CC;
+    --staff:#C9C5B8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  ::selection{background:var(--brass-pale);}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:16px;
+    line-height:2.05;
+    letter-spacing:0.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:660px;margin:0 auto;padding:0 24px;}
+
+  a{color:var(--brass-deep);text-decoration:underline;text-decoration-color:var(--brass-soft);text-underline-offset:4px;word-break:break-all;}
+  a:hover{color:var(--brass);}
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+
+  em{
+    font-style:normal;font-weight:700;
+    background:linear-gradient(transparent 72%, var(--brass-pale) 72%);
+    padding:0 1px;
+  }
+  .accent{color:var(--brass);font-weight:700;}
+
+  /* ---------- hero ---------- */
+  header{padding:88px 0 40px;}
+  .eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-size:11.5px;letter-spacing:0.34em;color:var(--brass);
+    font-weight:700;margin-bottom:28px;
+  }
+  .eyebrow::before{
+    content:"";display:block;width:34px;height:2px;background:var(--brass);
+  }
+  h1{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:clamp(28px,6vw,40px);
+    line-height:1.6;
+    letter-spacing:0.05em;
+  }
+  .lede{
+    margin-top:26px;color:var(--sub);font-size:15px;line-height:2.2;
+  }
+
+  /* ---------- summary ---------- */
+  .summary{
+    margin:46px 0 4px;
+    border:1px solid var(--line);
+    border-top:3px solid var(--brass);
+    border-radius:6px;
+    background:var(--card);
+    padding:28px 30px 26px;
+    box-shadow:0 1px 0 rgba(32,38,42,0.03);
+  }
+  .summary .t{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:15px;letter-spacing:0.16em;
+    color:var(--brass-deep);
+    margin-bottom:16px;
+  }
+  .summary .t svg{flex:0 0 auto;}
+  .summary ul{list-style:none;}
+  .summary li{
+    position:relative;
+    padding-left:22px;
+    line-height:1.95;
+    margin-bottom:10px;
+    font-size:14.5px;
+  }
+  .summary li:last-child{margin-bottom:0;}
+  .summary li::before{
+    content:"";
+    position:absolute;left:2px;top:0.78em;
+    width:8px;height:8px;border-radius:50%;
+    border:2px solid var(--brass-soft);
+    background:transparent;
+  }
+
+  /* ---------- divider ---------- */
+  .divider{
+    margin:72px auto;
+    display:flex;align-items:center;gap:20px;
+  }
+  .divider::before,
+  .divider::after{
+    content:"";flex:1;height:1px;
+  }
+  .divider::before{
+    background:linear-gradient(to right, transparent, var(--line));
+  }
+  .divider::after{
+    background:linear-gradient(to left, transparent, var(--line));
+  }
+  .divider span{
+    width:7px;height:7px;
+    background:var(--brass-soft);
+    transform:rotate(45deg);
+  }
+
+  /* ---------- section headers ---------- */
+  .sec-eyebrow{
+    font-size:11px;letter-spacing:0.36em;color:var(--brass);
+    font-weight:700;margin-bottom:10px;
+  }
+  h2{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:clamp(23px,4.6vw,29px);
+    letter-spacing:0.06em;
+    line-height:1.6;
+    margin-bottom:8px;
+  }
+  .h2-rule{
+    width:52px;height:2px;background:var(--brass-soft);
+    margin:18px 0 34px;
+  }
+  h3{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:0.04em;
+    margin:54px 0 16px;
+    padding-left:16px;
+    border-left:3px solid var(--brass);
+    line-height:1.7;
+  }
+  p{margin-bottom:1.35em;}
+  p:last-child{margin-bottom:0;}
+
+  /* ---------- pull quote ---------- */
+  .pull{
+    position:relative;
+    margin:40px 0;
+    padding:26px 28px 24px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--brass-soft);
+    border-radius:0 6px 6px 0;
+    font-family:'Shippori Mincho',serif;
+    font-size:17px;
+    line-height:2;
+    letter-spacing:0.03em;
+  }
+  .pull small{
+    display:block;margin-top:10px;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:12.5px;color:var(--sub);letter-spacing:0.06em;
+  }
+
+  /* ---------- 85:15 bar ---------- */
+  .ratio{margin:38px 0 46px;}
+  .ratio .bar{
+    position:relative;
+    display:flex;height:50px;border-radius:6px;overflow:hidden;
+    box-shadow:inset 0 0 0 1px rgba(32,38,42,0.06);
+  }
+  .ratio .song{
+    flex:0 0 85%;
+    background:linear-gradient(180deg,var(--brass-soft) 0%,var(--brass) 55%);
+  }
+  .ratio .wind{flex:0 0 15%;background:var(--brass-pale);}
+  .ratio .bar::after{
+    content:"";
+    position:absolute;top:-5px;bottom:-5px;left:85%;
+    width:2px;background:var(--ink);opacity:0.55;
+  }
+  .ratio .labels{
+    display:flex;margin-top:12px;
+  }
+  .ratio .labels .l-song{flex:0 0 85%;}
+  .ratio .labels .l-wind{flex:0 0 15%;text-align:right;}
+  .ratio .labels b{
+    font-family:'Shippori Mincho',serif;
+    font-size:15px;letter-spacing:0.06em;font-weight:600;
+    display:block;line-height:1.6;
+  }
+  .ratio .labels span{
+    display:block;font-size:12px;color:var(--sub);line-height:1.7;
+  }
+
+  /* ---------- loop ---------- */
+  .loop{
+    margin:36px 0 44px;
+    display:flex;flex-direction:column;align-items:center;
+    gap:0;
+  }
+  .loop .step{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:999px;padding:9px 30px;
+    font-size:14px;font-weight:500;letter-spacing:0.04em;
+    box-shadow:0 1px 2px rgba(32,38,42,0.05);
+  }
+  .loop .arrow{
+    width:1.5px;height:22px;background:var(--brass-soft);
+    position:relative;
+  }
+  .loop .arrow::after{
+    content:"";
+    position:absolute;bottom:0;left:50%;
+    transform:translateX(-50%);
+    border:5px solid transparent;
+    border-top:6px solid var(--brass-soft);
+    border-bottom:0;
+  }
+  .loop .back{
+    margin-top:14px;
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12.5px;color:var(--brass-deep);letter-spacing:0.08em;
+    border:1px dashed var(--brass-soft);
+    border-radius:999px;
+    padding:5px 18px;
+    background:var(--card);
+  }
+
+  section{padding:4px 0;}
+  .end{padding-bottom:40px;}
+
+  /* ---------- videos ---------- */
+  .videos{margin-top:34px;}
+  .vgroup{margin-bottom:34px;}
+  .vgroup:last-child{margin-bottom:0;}
+  .vgroup .vname{
+    display:flex;align-items:baseline;gap:12px;
+    margin-bottom:6px;
+  }
+  .vgroup .vname b{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:17px;letter-spacing:0.06em;
+  }
+  .vgroup .vname span{
+    font-size:10.5px;letter-spacing:0.26em;color:var(--brass);
+    font-weight:700;text-transform:uppercase;
+  }
+  .vrow{
+    display:flex;align-items:center;gap:14px;
+    padding:13px 4px;
+    border-top:1px solid var(--line);
+    text-decoration:none;color:var(--ink);
+    transition:background 0.15s;
+  }
+  .vgroup .vrow:last-child{border-bottom:1px solid var(--line);}
+  .vrow:hover{background:var(--card);color:var(--ink);}
+  .vrow .who{
+    flex:0 0 auto;min-width:9em;
+    font-weight:700;font-size:14.5px;line-height:1.7;
+  }
+  .vrow .what{
+    flex:1 1 auto;
+    font-size:13px;color:var(--sub);line-height:1.7;
+  }
+  .vrow .go{
+    flex:0 0 auto;
+    font-size:12px;color:var(--brass-deep);letter-spacing:0.06em;
+    white-space:nowrap;
+  }
+  .vrow .go::after{content:" ↗";}
+  .vrow.single{
+    border-bottom:1px solid var(--line);
+    margin:2px 0 28px;
+  }
+
+  /* ---------- back to index ---------- */
+  .home{
+    margin-top:44px;padding:26px 0 96px;
+    border-top:1px solid var(--line);
+  }
+  .home a{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:0.08em;
+    text-decoration:none;color:var(--brass-deep);
+  }
+  .home a:hover{color:var(--brass);}
+  .home a::before{content:"←";}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+  @media (max-width:480px){
+    .vrow{flex-wrap:wrap;gap:2px 14px;padding:12px 2px;}
+    .vrow .who{min-width:0;}
+    .vrow .what{flex-basis:100%;}
+  }
+
+  @media (max-width:480px){
+    body{font-size:15px;}
+    header{padding:64px 0 32px;}
+    .divider{margin:56px auto;}
+    .pull{padding:22px 20px 20px;font-size:16px;}
+    .summary{padding:24px 20px 22px;}
+    .ratio .labels .l-wind b{font-size:13px;}
+    .loop .step{padding:8px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="eyebrow">WARM-UP &amp; TONE</div>
+  <h1>ウォーミングアップと音色づくり</h1>
+  <p class="lede">平日は忙しくて、楽器を吹けるのは週末だけ。それでも短い練習時間で上達していくにはどうすれば良いのか。合奏の基礎練習で話した内容を、ウォーミングアップ編と音色編に分けてまとめました。</p>
+
+  <div class="summary">
+    <div class="t">
+      <svg width="15" height="18" viewBox="0 0 15 18" aria-hidden="true"><path d="M5 1.2v10.9a3.4 3.4 0 1 0 1.3 2.65V4.9L13 3.3v6a3.4 3.4 0 1 0 1.3 2.65V.2L5 2.3Z" fill="#A8842F"/></svg>
+      この記事のポイント
+    </div>
+    <ul>
+      <li>楽器を持って最初にやるウォーミングアップメニューを決めておくと調子の戻りが早い</li>
+      <li>息は「お腹→胸」の2段階で吸う</li>
+      <li>"Song and Wind"を意識。音を出す前に、出したい音のイメージを明確に持つ</li>
+      <li>音を出す→自分の音を聞く→イメージと比べる→変える、を繰り返す</li>
+      <li>「今までと同じやり方」で止まらず、試しに少し変えてみて、自分の音を聞いてみる</li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= WARM-UP ================= -->
+<section class="wrap">
+  <div class="sec-eyebrow">WARM-UP</div>
+  <h2>ウォーミングアップ編</h2>
+  <div class="h2-rule"></div>
+
+  <h3>最初にやるウォーミングアップメニューを決めておく</h3>
+  <p>久しぶりに楽器を出した日は、なかなか思うように鳴りません。体が感覚を忘れてしまって、一日中練習してもなんだか調子が上がらないまま終わる、なんてことも意外とよくあることでしょう。そこでおすすめしたいのが、<em>「楽器を持って最初にやるウォーミングアップメニュー」をあらかじめ決めておく</em>ことです。</p>
+  <p>「これをやれば調子が戻る」という自分の手順を持っておくと、ブランク明けの立ち上がりが早くなります。うまく音が鳴らせない状態でもとりあえずやりきって、体の調子を戻していくメニューを持っておくことをお勧めします。</p>
+
+  <h3>息は「2段階」で吸う</h3>
+  <p>16拍かけて限界まで吸い、16拍かけて吐き切る。次は8拍で半分だけ。実際にやってみると、<em>息を深く吸うのは意外と難しい</em>ことが分かります。</p>
+  <p>普段普通に生活している時の呼吸は、楽器を吹く時の呼吸とは異なるので、急に楽器を吹くとうまくいかないことがあります。楽器を吹く時に使う呼吸が無理なくできるよう、ブレスの練習をウォーミングアップに取り入れると、音色の改善に効果的です。（金管の方は、音域の拡大にも効果があります。）</p>
+  <p>ブレス練習は体のストレッチだと考えてください。個人的には、肺活量そのものよりも、空気を体に入れて体が膨らむ時に柔軟性が十分にあることの方が重要だと思います。</p>
+  <p>コツは、腹式か胸式か、という考え方よりも、<em>「まずお腹に入れて、そのあと胸へ」という2段階</em>で吸うことです。コップに下から水が溜まっていくように、空気を体の下から順に溜めていくイメージです。<br>（世界的なトロンボーン奏者、Joseph Alessiのマスタークラスを聴講した際に仕入れた情報です。めちゃうまいのでぜひ聞いてみてください。）</p>
+  <a class="vrow single" href="https://youtu.be/EjRkbP-TWTE?si=AoJSE9w25vWVvRbp" target="_blank" rel="noopener">
+    <span class="who">ジョセフ・アレッシ</span>
+    <span class="what">ニューヨーク・フィル首席トロンボーン奏者</span>
+    <span class="go">動画を見る</span>
+  </a>
+</section>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= TONE ================= -->
+<section class="wrap">
+  <div class="sec-eyebrow">TONE</div>
+  <h2>音色編</h2>
+  <div class="h2-rule"></div>
+
+  <h3>音を出すとき、何を考えているか</h3>
+  <p>構えて、吸って、音を出す。そのとき何を考えているか、思い出してみてください。多くの人は、肝心の「自分の音」以外のことを考えていることでしょう。楽器を吹くことに慣れてくると、特に何も考えなくても、惰性で吹くことができるようになります。それ自体は悪いことではありませんし、考えていなくても反復練習で上達していく側面はあるでしょう。</p>
+  <p>しかし、いい音を出すための第一歩は、「こういう音を出したい」と思い描くことです。ぜひこれを徹底して自分の音と向き合う時間をとるようにしてみてください。</p>
+
+  <h3>Song and Wind</h3>
+  <p>シカゴ交響楽団のテューバ奏者、アーノルド・ジェイコブスが、「<span class="accent">Song and Wind（歌と息）</span>」という言葉を残しています。</p>
+  <p>ジェイコブスのいう"Song &amp; Wind"とは、直訳すれば文字通り"歌と息"と言い表せますが、ここでは、"Song（歌）"はイメージや表現、ニュアンスに代表される「音楽の実体」を、"Wind（息）"は息を出すこと、指の動き、タンギング等に代表される「人間の運動行為」をそれぞれ象徴しています。音楽のイメージと楽器を鳴らす行為のどちらか一方のみではなく、双方が一体となることで初めて「演奏」というものが成り立つということを説いた言葉です。この際、ジェイコブスは思考の85%は「Song」に、15%は「Wind」という割合で身体の動きよりも歌を優先させるべきであると述べています。</p>
+
+  <div class="ratio">
+    <div class="bar">
+      <div class="song"></div>
+      <div class="wind"></div>
+    </div>
+    <div class="labels">
+      <div class="l-song"><b>Song 85</b><span>出したい音のイメージ</span></div>
+      <div class="l-wind"><b>Wind 15</b><span>息・体の使い方</span></div>
+    </div>
+  </div>
+
+  <p>音を出してから調整するのではなく、<em>先に「Song＝出したい音のイメージ」を持ち、それを実現するために「Wind = 体の使い方」をどう使うかを考えることが重要です</em>。</p>
+
+  <h3>音色づくりのプロセス</h3>
+
+  <div class="loop">
+    <span class="step">出したい音をイメージする</span>
+    <span class="arrow"></span>
+    <span class="step">吹く</span>
+    <span class="arrow"></span>
+    <span class="step">自分の音をよく聞く</span>
+    <span class="arrow"></span>
+    <span class="step">イメージと比べて、変えてみる</span>
+    <span class="back">↻ 最初に戻って繰り返す</span>
+  </div>
+
+  <p>「なんだか響かないな」「少し硬いな」など、先に持っていたイメージと比較をすることで、違和感を持つことができます。息の量やスピード、吹き方を変えて、もう一度比べる。音色に絶対の正解はありませんが、自分が理想とするイメージをしっかり持って、この繰り返しを回し続けることが、音色の改善や、出せる表現の幅を広げることに繋がります。</p>
+  <p>明確にイメージを持てない方は、自分と同じ楽器で、良い音だなと思える奏者（プロの方でも友達でも構いません）や、魅力的な演奏動画を見つけることから始めてみると良いでしょう。この記事の最後に、楽器ごとのおすすめ演奏動画をまとめているので、そちらも参考にしてみてください。</p>
+
+  <h3>「今までのやり方」を信じすぎない</h3>
+  <p>長く続けていると、自分の音のことを考えなくなってきます。「今までこれでやってきたから」と吹き方を固定してしまうと、そこから先に成長はありません。</p>
+  <p>「もしかしてこうじゃないか」と変えてみて、自分の音をよく聞き、良かったら採用する。楽器歴が長い人ほど、この考え方を意識して、より良い演奏を目指してほしいなと思います。</p>
+</section>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= VIDEOS ================= -->
+<section class="wrap end">
+  <div class="sec-eyebrow">LISTEN</div>
+  <h2>おすすめの演奏動画</h2>
+  <div class="h2-rule"></div>
+  <p>出したい音のイメージ探しの参考に、楽器ごとのおすすめ演奏動画をまとめました。（管楽器にしか詳しくないので、管楽器ばかりですみません…）</p>
+
+  <div class="videos">
+
+    <div class="vgroup">
+      <div class="vname"><b>フルート</b><span>Flute</span></div>
+      <a class="vrow" href="https://youtu.be/eChLCFAGyx0?si=Vo9A3Cduw39EIyDe" target="_blank" rel="noopener">
+        <span class="who">エマニュエル・パユ</span>
+        <span class="what">ビゼー《カルメン》より間奏曲</span>
+        <span class="go">動画を見る</span>
+      </a>
+      <a class="vrow" href="https://youtu.be/uB-WRSLIT1s?si=yic25IRBvVs_5wkA" target="_blank" rel="noopener">
+        <span class="who">エマニュエル・パユ</span>
+        <span class="what">フォーレ《ファンタジー》op.79</span>
+        <span class="go">動画を見る</span>
+      </a>
+    </div>
+
+    <div class="vgroup">
+      <div class="vname"><b>オーボエ</b><span>Oboe</span></div>
+      <a class="vrow" href="https://youtu.be/kvh39r-Xk48?si=RCj8vCVh6N72yhc9" target="_blank" rel="noopener">
+        <span class="who">宮本文昭</span>
+        <span class="what">《風笛》</span>
+        <span class="go">動画を見る</span>
+      </a>
+    </div>
+
+    <div class="vgroup">
+      <div class="vname"><b>クラリネット</b><span>Clarinet</span></div>
+      <a class="vrow" href="https://youtube.com/@kohanclarinet?si=GLFsmTARTpvZoFxp" target="_blank" rel="noopener">
+        <span class="who">コハーン・イシュトヴァーン</span>
+        <span class="what">YouTubeチャンネル</span>
+        <span class="go">チャンネルを見る</span>
+      </a>
+      <a class="vrow" href="https://youtube.com/@yutokameiclarinet0727?si=m9HMH_rK9x0SBHww" target="_blank" rel="noopener">
+        <span class="who">亀居優斗</span>
+        <span class="what">YouTubeチャンネル</span>
+        <span class="go">チャンネルを見る</span>
+      </a>
+      <a class="vrow" href="https://youtube.com/@poppiesquartet?si=kUR7nda6CRv_o_oc" target="_blank" rel="noopener">
+        <span class="who">Poppies Quartet</span>
+        <span class="what">クラリネット四重奏のYouTubeチャンネル</span>
+        <span class="go">チャンネルを見る</span>
+      </a>
+    </div>
+
+    <div class="vgroup">
+      <div class="vname"><b>サックス</b><span>Saxophone</span></div>
+      <a class="vrow" href="https://youtu.be/623BHlnO4_8?si=Ojwv8UEtHu0YtNQ_" target="_blank" rel="noopener">
+        <span class="who">上野耕平</span>
+        <span class="what">《ニュー・シネマ・パラダイス》メドレー</span>
+        <span class="go">動画を見る</span>
+      </a>
+      <a class="vrow" href="https://youtu.be/tTZa0IxmRd0?si=FQqFHV7P8bewvSC_" target="_blank" rel="noopener">
+        <span class="who">齋藤健太</span>
+        <span class="what">イベール《アルト・サクソフォーンと11の楽器のための室内小協奏曲》</span>
+        <span class="go">動画を見る</span>
+      </a>
+    </div>
+
+    <div class="vgroup">
+      <div class="vname"><b>トランペット</b><span>Trumpet</span></div>
+      <a class="vrow" href="https://youtu.be/MNEnYcAR_UY?si=Hle7IjaoZnDpwc4O" target="_blank" rel="noopener">
+        <span class="who">マティアス・ヘフス</span>
+        <span class="what">アルチュニアン：トランペット協奏曲</span>
+        <span class="go">動画を見る</span>
+      </a>
+      <a class="vrow" href="https://youtu.be/oaqZMkFKFas?si=gBFO5KvdXNS3FMjq" target="_blank" rel="noopener">
+        <span class="who">マティアス・ヘフス</span>
+        <span class="what">フンメル：トランペット協奏曲 ホ長調</span>
+        <span class="go">動画を見る</span>
+      </a>
+    </div>
+
+    <div class="vgroup">
+      <div class="vname"><b>トロンボーン</b><span>Trombone</span></div>
+      <a class="vrow" href="https://youtu.be/eTRfy3Vnygg?si=5djh5NruE3lH-mXc" target="_blank" rel="noopener">
+        <span class="who">イアン・バウスフィールド</span>
+        <span class="what">アッペルモント《Colors》</span>
+        <span class="go">動画を見る</span>
+      </a>
+      <a class="vrow" href="https://youtu.be/Mn8569oTBg8?si=Q7U7mRTrhj8FTHsT" target="_blank" rel="noopener">
+        <span class="who">ステファン・シュルツ</span>
+        <span class="what">《Lotta's Song》（バストロンボーン）</span>
+        <span class="go">動画を見る</span>
+      </a>
+      <a class="vrow" href="https://youtu.be/YDf4-TRM2Us?si=Ku6JTaSPKPEdJZyw" target="_blank" rel="noopener">
+        <span class="who">マイケル・ブキャナン</span>
+        <span class="what">ダヴィッド：トロンボーン協奏曲（コンチェルティーノ）</span>
+        <span class="go">動画を見る</span>
+      </a>
+    </div>
+
+    <div class="vgroup">
+      <div class="vname"><b>ユーフォニアム</b><span>Euphonium</span></div>
+      <a class="vrow" href="https://youtu.be/lnr7q2ZWHxI?si=8n7uR1G4dbpHElPA" target="_blank" rel="noopener">
+        <span class="who">マウロ・マルティンス</span>
+        <span class="what">ジル・ロシャ《Blind Spot》</span>
+        <span class="go">動画を見る</span>
+      </a>
+      <a class="vrow" href="https://youtu.be/Udnm5mNs1_I?si=IWroO6Njg6wpmL21" target="_blank" rel="noopener">
+        <span class="who">佐藤采香</span>
+        <span class="what">スパーク《Pantomime》</span>
+        <span class="go">動画を見る</span>
+      </a>
+    </div>
+
+    <div class="vgroup">
+      <div class="vname"><b>チューバ</b><span>Tuba</span></div>
+      <a class="vrow" href="https://youtu.be/GyiDwtve-LY?si=X982qj8Sy5_OEU7K" target="_blank" rel="noopener">
+        <span class="who">ハンス・ニッケル</span>
+        <span class="what">ジョン・ウィリアムズ：チューバ協奏曲</span>
+        <span class="go">動画を見る</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="home"><a href="../">記事一覧へ</a></div>
+</div>
+
+</body>
+</html>
