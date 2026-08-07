@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>練習ノート</title>
+<title>Practice Notes</title>
 
-<!-- ▼ 公開後、ユーザー名とサイト名を書き換えてください -->
+<!-- ▼ 公開後、og:url の「ユーザー名」を実際のURLに書き換えてください -->
 <meta name="description" content="合奏の基礎練習で話したことを、あとから読み返せるように書き留めています。">
 <meta name="theme-color" content="#A8842F">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:site_name" content="練習ノート">
-<meta property="og:title" content="練習ノート">
+<meta property="og:site_name" content="Practice Notes">
+<meta property="og:title" content="Practice Notes">
 <meta property="og:description" content="合奏の基礎練習で話したことを、あとから読み返せるように書き留めています。">
 <meta property="og:url" content="https://ユーザー名.github.io/">
 <meta name="twitter:card" content="summary_large_image">
@@ -48,21 +48,19 @@
   :focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
 
   /* ---------- hero ---------- */
-  header{padding:96px 0 44px;}
-  .eyebrow{
-    display:flex;align-items:center;gap:14px;
-    font-size:11.5px;letter-spacing:0.34em;color:var(--brass);
-    font-weight:700;margin-bottom:28px;
-  }
-  .eyebrow::before{
-    content:"";display:block;width:34px;height:2px;background:var(--brass);
-  }
-  h1{
+  header{padding:104px 0 44px;}
+  .sitename{
     font-family:'Shippori Mincho',serif;
-    font-weight:600;
-    font-size:clamp(30px,7vw,44px);
-    line-height:1.55;
-    letter-spacing:0.08em;
+    font-weight:500;
+    font-size:clamp(26px,6.4vw,38px);
+    line-height:1.5;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+  }
+  .sitename::after{
+    content:"";display:block;
+    width:44px;height:2px;background:var(--brass);
+    margin-top:22px;
   }
   .lede{margin-top:24px;color:var(--sub);font-size:15px;line-height:2.2;}
 
@@ -148,8 +146,7 @@
 <body>
 
 <header class="wrap">
-  <div class="eyebrow">PRACTICE NOTES</div>
-  <h1>練習ノート</h1>
+  <h1 class="sitename">Practice Notes</h1>
   <p class="lede">合奏の基礎練習で話したことを、あとから読み返せるように書き留めています。楽器を問わず使える話が中心です。</p>
 </header>
 
@@ -190,7 +187,7 @@
 </main>
 
 <div class="wrap">
-  <footer>練習ノート</footer>
+  <footer>Practice Notes</footer>
 </div>
 
 </body>
