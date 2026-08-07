@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>練習ノート</title>
+
+<!-- ▼ 公開後、ユーザー名とサイト名を書き換えてください -->
+<meta name="description" content="合奏の基礎練習で話したことを、あとから読み返せるように書き留めています。">
+<meta name="theme-color" content="#A8842F">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="練習ノート">
+<meta property="og:title" content="練習ノート">
+<meta property="og:description" content="合奏の基礎練習で話したことを、あとから読み返せるように書き留めています。">
+<meta property="og:url" content="https://ユーザー名.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- ▲ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF9F4;
+    --card:#FFFDF8;
+    --ink:#20262A;
+    --sub:#5C666B;
+    --brass:#A8842F;
+    --brass-deep:#8C6C22;
+    --brass-soft:#C9A75C;
+    --brass-pale:#EFE7D2;
+    --line:#DDD9CC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  ::selection{background:var(--brass-pale);}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:16px;
+    line-height:2.05;
+    letter-spacing:0.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:660px;margin:0 auto;padding:0 24px;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+
+  /* ---------- hero ---------- */
+  header{padding:96px 0 44px;}
+  .eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-size:11.5px;letter-spacing:0.34em;color:var(--brass);
+    font-weight:700;margin-bottom:28px;
+  }
+  .eyebrow::before{
+    content:"";display:block;width:34px;height:2px;background:var(--brass);
+  }
+  h1{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:clamp(30px,7vw,44px);
+    line-height:1.55;
+    letter-spacing:0.08em;
+  }
+  .lede{margin-top:24px;color:var(--sub);font-size:15px;line-height:2.2;}
+
+  /* ---------- divider ---------- */
+  .divider{margin:64px auto;display:flex;align-items:center;gap:20px;}
+  .divider::before,
+  .divider::after{content:"";flex:1;height:1px;}
+  .divider::before{background:linear-gradient(to right,transparent,var(--line));}
+  .divider::after{background:linear-gradient(to left,transparent,var(--line));}
+  .divider span{width:7px;height:7px;background:var(--brass-soft);transform:rotate(45deg);}
+
+  /* ---------- section head ---------- */
+  .sec-eyebrow{
+    font-size:11px;letter-spacing:0.36em;color:var(--brass);
+    font-weight:700;margin-bottom:10px;
+  }
+  h2{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:clamp(23px,4.6vw,29px);
+    letter-spacing:0.06em;line-height:1.6;
+  }
+  .h2-rule{width:52px;height:2px;background:var(--brass-soft);margin:18px 0 8px;}
+
+  /* ---------- entry list ---------- */
+  .entries{margin-top:26px;}
+  .entry{
+    display:flex;align-items:baseline;gap:0 20px;
+    padding:22px 6px 20px;
+    border-top:1px solid var(--line);
+    text-decoration:none;
+    transition:background 0.15s ease;
+  }
+  .entry:last-of-type{border-bottom:1px solid var(--line);}
+  .entry:hover{background:var(--card);}
+  .entry .date{
+    flex:0 0 auto;min-width:7.2em;
+    font-size:12px;letter-spacing:0.12em;color:var(--brass);
+    font-weight:700;line-height:2.4;
+  }
+  .entry .body{flex:1 1 auto;min-width:0;}
+  .entry .etitle{
+    display:block;
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:19px;letter-spacing:0.05em;line-height:1.7;
+  }
+  .entry:hover .etitle{color:var(--brass-deep);}
+  .entry .edesc{
+    display:block;margin-top:6px;
+    font-size:13.5px;color:var(--sub);line-height:1.95;
+  }
+  .entry .go{
+    flex:0 0 auto;
+    font-size:12px;color:var(--brass-deep);letter-spacing:0.06em;
+    white-space:nowrap;line-height:2.4;
+    transition:transform 0.15s ease;
+  }
+  .entry .go::after{content:" →";}
+  .entry:hover .go{transform:translateX(3px);}
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:88px;padding:26px 0 96px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--sub);letter-spacing:0.06em;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+  @media (max-width:480px){
+    body{font-size:15px;}
+    header{padding:68px 0 34px;}
+    .divider{margin:52px auto;}
+    .entry{flex-wrap:wrap;gap:0;padding:18px 2px 18px;}
+    .entry .date{min-width:0;flex:1 1 auto;line-height:1.9;}
+    .entry .go{line-height:1.9;}
+    .entry .body{flex:1 1 100%;margin-top:4px;}
+    .entry .etitle{font-size:17.5px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="eyebrow">PRACTICE NOTES</div>
+  <h1>練習ノート</h1>
+  <p class="lede">合奏の基礎練習で話したことを、あとから読み返せるように書き留めています。楽器を問わず使える話が中心です。</p>
+</header>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<main class="wrap">
+  <div class="sec-eyebrow">ARCHIVE</div>
+  <h2>記事一覧</h2>
+  <div class="h2-rule"></div>
+
+  <div class="entries">
+
+    <a class="entry" href="warmup-tone/">
+      <span class="date"><time datetime="2026-08-07">2026.08.07</time></span>
+      <span class="body">
+        <span class="etitle">ウォーミングアップと音色づくり</span>
+        <span class="edesc">週末しか楽器を吹けなくても上達するために。ウォーミングアップの組み立て方と、Song and Windを軸にした音色づくりの考え方。</span>
+      </span>
+      <span class="go">読む</span>
+    </a>
+
+    <!-- 記事を追加するときは、この形をコピーして上に足してください。
+         href はフォルダ名（末尾のスラッシュを忘れずに）。新しい記事ほど上に並べます。
+
+    <a class="entry" href="フォルダ名/">
+      <span class="date"><time datetime="2026-09-01">2026.09.01</time></span>
+      <span class="body">
+        <span class="etitle">記事のタイトル</span>
+        <span class="edesc">1〜2行の説明。</span>
+      </span>
+      <span class="go">読む</span>
+    </a>
+    -->
+
+  </div>
+</main>
+
+<div class="wrap">
+  <footer>練習ノート</footer>
+</div>
+
+</body>
+</html>
