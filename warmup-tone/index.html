@@ -252,6 +252,43 @@
   section{padding:4px 0;}
   .end{padding-bottom:40px;}
 
+  /* ---------- score (PDF) ---------- */
+  .score{margin:34px 0 8px;}
+  .score .frame{
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--card);
+    overflow:hidden;
+    box-shadow:0 1px 3px rgba(32,38,42,0.06);
+  }
+  .score .frame object{
+    display:block;width:100%;aspect-ratio:1/1.32;border:0;
+  }
+  .score .fallback{
+    padding:26px 24px;font-size:13.5px;color:var(--sub);line-height:1.9;
+  }
+  .score .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+  .score .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:0.06em;text-decoration:none;
+    padding:10px 20px;border-radius:999px;
+    border:1px solid var(--brass-soft);
+    color:var(--brass-deep);background:var(--card);
+    transition:background 0.15s,color 0.15s;
+  }
+  .score .btn:hover{background:var(--brass-pale);color:var(--brass-deep);}
+  .score .btn.primary{
+    background:var(--brass);border-color:var(--brass);color:#fff;
+  }
+  .score .btn.primary:hover{background:var(--brass-deep);color:#fff;}
+  .score .meta{
+    margin-top:12px;font-size:12px;color:var(--sub);letter-spacing:0.04em;
+  }
+  /* スマホはPDFのインライン表示が不安定なのでボタンのみに */
+  @media (max-width:820px){
+    .score .frame{display:none;}
+  }
+
   /* ---------- videos ---------- */
   .videos{margin-top:34px;}
   .vgroup{margin-bottom:34px;}
@@ -326,6 +363,7 @@
     .summary{padding:24px 20px 22px;}
     .ratio .labels .l-wind b{font-size:13px;}
     .loop .step{padding:8px 22px;}
+    .score .btn{flex:1 1 100%;justify-content:center;}
   }
 </style>
 </head>
@@ -375,6 +413,24 @@
     <span class="what">ニューヨーク・フィル首席トロンボーン奏者</span>
     <span class="go">動画を見る</span>
   </a>
+
+  <h3>ウォーミングアップ楽譜</h3>
+  <p>僕が最近よくやっているウォーミングアップの譜面です。よかったらご自身の練習に活用してください。(特に金管の方は一度試してみてくれると嬉しいです)</p>
+
+  <div class="score">
+    <div class="frame">
+      <object data="warmup.pdf" type="application/pdf" aria-label="ウォーミングアップ楽譜">
+        <div class="fallback">
+          お使いのブラウザでは楽譜を直接表示できません。下のボタンから開いてください。
+        </div>
+      </object>
+    </div>
+    <div class="acts">
+      <a class="btn primary" href="warmup.pdf" target="_blank" rel="noopener">楽譜を開く ↗</a>
+      <a class="btn" href="warmup.pdf" download="ウォーミングアップ楽譜.pdf">ダウンロード</a>
+    </div>
+    <p class="meta">PDF / A4・全3ページ / 約57KB</p>
+  </div>
 </section>
 
 <div class="wrap">
