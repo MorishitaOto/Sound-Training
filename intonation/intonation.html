@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音程の合わせ方</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF9F4;
+    --card:#FFFDF8;
+    --ink:#20262A;
+    --sub:#5C666B;
+    --brass:#A8842F;
+    --brass-deep:#8C6C22;
+    --brass-soft:#C9A75C;
+    --brass-pale:#EFE7D2;
+    --line:#DDD9CC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  ::selection{background:var(--brass-pale);}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:16px;
+    line-height:2.05;
+    letter-spacing:0.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:660px;margin:0 auto;padding:0 24px;}
+
+  a{color:var(--brass-deep);text-decoration:underline;text-decoration-color:var(--brass-soft);text-underline-offset:4px;word-break:break-all;}
+  a:hover{color:var(--brass);}
+
+  em{
+    font-style:normal;font-weight:700;
+    background:linear-gradient(transparent 72%, var(--brass-pale) 72%);
+    padding:0 1px;
+  }
+  .accent{color:var(--brass);font-weight:700;}
+
+  /* ---------- hero ---------- */
+  header{padding:88px 0 40px;}
+  .eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-size:11.5px;letter-spacing:0.34em;color:var(--brass);
+    font-weight:700;margin-bottom:28px;
+  }
+  .eyebrow::before{
+    content:"";display:block;width:34px;height:2px;background:var(--brass);
+  }
+  h1{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:clamp(28px,6vw,40px);
+    line-height:1.6;
+    letter-spacing:0.05em;
+  }
+  .lede{
+    margin-top:26px;color:var(--sub);font-size:15px;line-height:2.2;
+  }
+
+  /* ---------- summary ---------- */
+  .summary{
+    margin:46px 0 4px;
+    border:1px solid var(--line);
+    border-top:3px solid var(--brass);
+    border-radius:6px;
+    background:var(--card);
+    padding:28px 30px 26px;
+    box-shadow:0 1px 0 rgba(32,38,42,0.03);
+  }
+  .summary .t{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:15px;letter-spacing:0.16em;
+    color:var(--brass-deep);
+    margin-bottom:16px;
+  }
+  .summary .t svg{flex:0 0 auto;}
+  .summary ul{list-style:none;}
+  .summary li{
+    position:relative;
+    padding-left:22px;
+    line-height:1.95;
+    margin-bottom:10px;
+    font-size:14.5px;
+  }
+  .summary li:last-child{margin-bottom:0;}
+  .summary li::before{
+    content:"";
+    position:absolute;left:2px;top:0.78em;
+    width:8px;height:8px;border-radius:50%;
+    border:2px solid var(--brass-soft);
+    background:transparent;
+  }
+
+  /* ---------- stages ---------- */
+  .stages{margin:36px 0 44px;}
+  .stages .st{
+    position:relative;
+    display:flex;align-items:flex-start;gap:20px;
+    padding:0 0 26px 6px;
+  }
+  .stages .st:last-child{padding-bottom:0;}
+  .stages .st::before{
+    content:"";
+    position:absolute;left:24px;top:40px;bottom:2px;
+    width:1.5px;background:var(--brass-pale);
+  }
+  .stages .st:last-child::before{display:none;}
+  .stages .num{
+    flex:0 0 38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    border:1.5px solid var(--brass-soft);
+    border-radius:50%;
+    background:var(--card);
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:17px;color:var(--brass-deep);
+    position:relative;z-index:1;
+  }
+  .stages .txt{padding-top:3px;}
+  .stages .txt b{
+    display:block;
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:16.5px;letter-spacing:0.04em;
+    line-height:1.7;
+  }
+  .stages .txt span{
+    display:block;font-size:13.5px;color:var(--sub);line-height:1.9;
+    margin-top:2px;
+  }
+
+  /* ---------- stage tag ---------- */
+  .tag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:11.5px;font-weight:700;letter-spacing:0.1em;
+    color:var(--brass-deep);
+    border:1px solid var(--brass-soft);
+    border-radius:999px;
+    background:var(--card);
+    padding:2px 12px;
+    margin-left:12px;
+    vertical-align:middle;
+    white-space:nowrap;
+  }
+
+  /* ---------- divider ---------- */
+  .divider{
+    margin:72px auto;
+    display:flex;align-items:center;gap:20px;
+  }
+  .divider::before,
+  .divider::after{
+    content:"";flex:1;height:1px;
+  }
+  .divider::before{
+    background:linear-gradient(to right, transparent, var(--line));
+  }
+  .divider::after{
+    background:linear-gradient(to left, transparent, var(--line));
+  }
+  .divider span{
+    width:7px;height:7px;
+    background:var(--brass-soft);
+    transform:rotate(45deg);
+  }
+
+  /* ---------- section headers ---------- */
+  .sec-eyebrow{
+    font-size:11px;letter-spacing:0.36em;color:var(--brass);
+    font-weight:700;margin-bottom:10px;
+  }
+  h2{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:clamp(23px,4.6vw,29px);
+    letter-spacing:0.06em;
+    line-height:1.6;
+    margin-bottom:8px;
+  }
+  .h2-rule{
+    width:52px;height:2px;background:var(--brass-soft);
+    margin:18px 0 34px;
+  }
+  h3{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:0.04em;
+    margin:54px 0 16px;
+    padding-left:16px;
+    border-left:3px solid var(--brass);
+    line-height:1.7;
+  }
+  p{margin-bottom:1.35em;}
+  p:last-child{margin-bottom:0;}
+
+  /* ---------- pull quote ---------- */
+  .pull{
+    position:relative;
+    margin:40px 0;
+    padding:26px 28px 24px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:4px solid var(--brass-soft);
+    border-radius:0 6px 6px 0;
+    font-family:'Shippori Mincho',serif;
+    font-size:17px;
+    line-height:2;
+    letter-spacing:0.03em;
+  }
+  .pull small{
+    display:block;margin-top:10px;
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:12.5px;color:var(--sub);letter-spacing:0.06em;
+  }
+
+  /* ---------- loop ---------- */
+  .loop{
+    margin:36px 0 44px;
+    display:flex;flex-direction:column;align-items:center;
+    gap:0;
+  }
+  .loop .step{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:999px;padding:9px 30px;
+    font-size:14px;font-weight:500;letter-spacing:0.04em;
+    box-shadow:0 1px 2px rgba(32,38,42,0.05);
+  }
+  .loop .arrow{
+    width:1.5px;height:22px;background:var(--brass-soft);
+    position:relative;
+  }
+  .loop .arrow::after{
+    content:"";
+    position:absolute;bottom:0;left:50%;
+    transform:translateX(-50%);
+    border:5px solid transparent;
+    border-top:6px solid var(--brass-soft);
+    border-bottom:0;
+  }
+  .loop .back{
+    margin-top:14px;
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12.5px;color:var(--brass-deep);letter-spacing:0.08em;
+    border:1px dashed var(--brass-soft);
+    border-radius:999px;
+    padding:5px 18px;
+    background:var(--card);
+  }
+
+  /* ---------- training list ---------- */
+  .drills{margin:32px 0 44px;}
+  .drills .d{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:20px 24px 18px;
+    margin-bottom:14px;
+  }
+  .drills .d:last-child{margin-bottom:0;}
+  .drills .d b{
+    display:block;
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:15.5px;letter-spacing:0.04em;
+    color:var(--brass-deep);
+    margin-bottom:4px;
+    line-height:1.7;
+  }
+  .drills .d span{
+    display:block;font-size:13.5px;color:var(--sub);line-height:1.95;
+  }
+
+  section{padding:4px 0;}
+  .end{padding-bottom:100px;}
+
+  @media (max-width:480px){
+    body{font-size:15px;}
+    header{padding:64px 0 32px;}
+    .divider{margin:56px auto;}
+    .pull{padding:22px 20px 20px;font-size:16px;}
+    .summary{padding:24px 20px 22px;}
+    .loop .step{padding:8px 22px;}
+    .drills .d{padding:18px 18px 16px;}
+    .tag{display:inline-flex;margin-left:8px;font-size:10.5px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="eyebrow">INTONATION</div>
+  <h1>音程の合わせ方</h1>
+  <p class="lede">音程を合わせる力は練習で誰でも伸ばせる技術です。この記事では、音程が合うまでのステップを整理したうえで、そのために必要な2つの能力「音感」と「楽器をコントロールする能力」の鍛え方を紹介します。</p>
+
+  <div class="summary">
+    <div class="t">
+      <svg width="15" height="18" viewBox="0 0 15 18" aria-hidden="true"><path d="M5 1.2v10.9a3.4 3.4 0 1 0 1.3 2.65V4.9L13 3.3v6a3.4 3.4 0 1 0 1.3 2.65V.2L5 2.3Z" fill="#A8842F"></path></svg>
+      この記事のポイント
+    </div>
+    <ul>
+      <li>音程合わせは「だいたい同じ場所に集合する → 聴き比べて寄せる」の2ステップ</li>
+      <li>必要な能力は「音感」と「楽器をコントロールする能力」の2つ</li>
+      <li>合奏で重要になる音感の中心は相対音感。歌う・ドローン練習・チューナーの使い方で鍛える</li>
+      <li>チューニングは音色最優先。いちばん良い音色がなるポイントで吹いて、楽器側を合わせる</li>
+      <li>ピッチコントロールの練習は、わざと上げ下げして自分の可動域と楽器の癖を知ることから</li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= 音程の合わせ方 ================= -->
+<section class="wrap">
+  <div class="sec-eyebrow">STEP</div>
+  <h2>音程が合うまでの2つのステップ</h2>
+  <div class="h2-rule"></div>
+
+  <p>「音程を合わせる」とひとことで言いますが、実際にやっていることは2つのステップに分けられます。</p>
+
+  <div class="stages">
+    <div class="st">
+      <span class="num">1</span>
+      <span class="txt">
+        <b>だいたい同じ場所に集合する</b>
+        <span>まず全員が音感を頼りに、大きく外れていない場所に集まる</span>
+      </span>
+    </div>
+    <div class="st">
+      <span class="num">2</span>
+      <span class="txt">
+        <b>周りの音と自分の音を聴き比べて、寄せる</b>
+        <span>高いのか低いのか、響きが濁っているのか溶けているのかを聴き取って、合う場所へ寄せていく</span></span></div></div>
+
+  <h3>ステップ1の難しさは、楽器によって違う</h3>
+  <p>実は、この最初の「集合」の難易度は、楽器によってかなり違います。</p>
+  <p>金管楽器やフルートは、アンブシュアや息の向き、楽器の角度、トロンボーンならスライドの位置と、奏者側の自由度がとても高い楽器です。自由度が高いということは、表現の幅が広い一方で、<em>気をつけないと無自覚のうちに大きく外れてしまう</em>ということでもあります。チューナー中央の2本の線に収まらないほどずれることも、まったく珍しくありません。だからこそ、これらの楽器は<em>吹く前に出す音を頭の中でイメージする</em>意識 (前回の記事のSong and Wind の考え方)がないと、そもそもステップ 1 の「集合」ができません。</p>
+  <p>一方、オーボエやクラリネット、サックスのように、指が合っていればある程度正しい音程が鳴りやすい楽器もあります。これらの楽器では、ステップ 1 への意識は少なめでも形になる一方で、<em>「何もしなくてもだいたい合う」ことに甘えて、聴き比べて調整する習慣を持たないままだと、ステップ 2 がまったくできない奏者になってしまいます</em>。正しいピッチの周りに集合しやすい楽器の人ほど、意識的に耳を使い、周りに寄せる練習が必要だと考えてください。</p><p><br>では、このステップを踏むために<b>必要な能力</b>は何でしょうか。大きく2つに分けられます。</p>
+  <p>1つめは<em>音感</em>。ずれに気づけなければ、直しようがありません。2つめは<em>楽器をコントロールする能力</em>です。管楽器は同じ運指でも、息の入れ方やアンブシュアで音程が変わる楽器です。耳で「高い」と分かっても、楽器で寄せられなければ音は合いません。ここからは、それぞれの中身と鍛え方を順番に見ていきます。</p>
+</section>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= 音感編 ================= -->
+<section class="wrap">
+  <div class="sec-eyebrow">ABILITY 1</div>
+  <h2>音感</h2>
+  <div class="h2-rule"></div>
+
+  <h3>中心は「相対音感」と「うなりを聞く力」</h3>
+  <p>まず、ステップ1「だいたい同じ場所に集合する」を支えるのが<em>相対音感</em>です。相対音感とは、音を単独で聞いて階名を当てる絶対音感とは別物で、基準の音に対して高いか低いか、3度や5度といった音程（＝音と音の幅）など、音どうしの「関係」を捉える感覚のことです。習得に幼少期の訓練が必要とされる絶対音感と違い、<em>相対音感は大人になってからでも、練習した分だけ鍛えられる</em>と言われています。鍛える価値のある音感です。</p>
+  <p>そして、ステップ2の「聴き比べて寄せる」を達成するために必要な能力が、うなりを聞く力です。音程がずれていると、「ワンワンワン」という音の揺れ＝<em>うなり</em>が聞こえます。これは2つの音の周波数がずれているときに起こる物理現象で、ずれが大きいほど速く、合ってくるほどゆっくりになり、ぴったり合うと消えます。この揺れに気づけるようになると、うなりを頼りに、合う場所まで正確に寄せていけるようになります。</p>
+
+  <h3>トレーニング① 歌ってから、吹く</h3>
+  <p>最初の一歩は、実際に声に出して歌うことです。これから吹くフレーズを、まず声で歌ってみて、音程のイメージを作ることで、<em>楽器で吹いた音が合っていない時に違和感を持てる</em>ようになります。イメージが正確になるほど、最初の音が「だいたい合っている場所」に着地するようになります。</p>
+
+  <div class="loop">
+    <span class="step">基準音を聴く</span>
+    <span class="arrow"></span>
+    <span class="step">出す音を頭の中で（or 声で）歌う</span>
+    <span class="arrow"></span>
+    <span class="step">吹く</span>
+    <span class="arrow"></span>
+    <span class="step">うなりを聴いて合わせる</span>
+    <span class="back">↻ 繰り返して耳に刻む</span>
+  </div>
+
+  <h3>トレーニング② ドローン練習とアプリの活用</h3>
+  <p>チューナーやハーモニーディレクター、スマホのアプリなどで基準音（ドローン）を鳴らしっぱなしにして、その上でロングトーンや音階を吹きます。</p>
+  <p>自分の音と基準音を聴き比べて<em>高いのか低いのかを判断し、基準音に合うように調整する</em>ことを常に意識しましょう。判断がつかないときは、音程をどちらかにほんの少し動かしてみてください。うなりがゆっくりになればその方向が正解、速くなれば逆方向です。向きが分かったら、あとはうなりが消える方向へ少しずつ動かして調整します。「ずれの向きを判断する → 消える方向に動かす」。この一連の流れを、<em>なるべく短い時間でできるように</em>練習しましょう。合奏では、これを演奏しながら瞬時にやることになります。</p>
+  <p>ユニゾンで合わせられるようになったら、基準音に対して5度上、3度上など、違う音を当ててみてください。合っているときの響きをよく聴いて、その感覚を覚えて、いつでも再現できるようにしていきましょう。</p>
+
+  <h3>補足：チューナーの使い方</h3>
+  <p>ドローン練習でチューナーを使うときは、順番が大切です。先にメーターを見て針に合わせるのではなく、<em>まず耳で合わせて、そのあとにチューナーで確認する</em>ようにしましょう。「合ったと思ったけど少し高かった」と分かったら、自分の感覚のほうを修正しましょう。</p>
+  <p>音感がまだ育っていない段階では、チューナーを積極的に使ってください。ずれた音を「合っている」と思い込んで練習すると、その状態が定着してしまいます。耳で合わせたつもりの音をチューナーで確かめて、感覚と現実のずれを埋めていきましょう。自身に音感が正しく身についているかを確認する一つの目安として、普段の合奏で「音程が濁って気持ち悪いな」と感じる場面がどれくらいあるかを思い出してみてください。その回数が少ない人ほど音感のトレーニングが必要です。合奏で誰も彼もが完璧に合っていることはまずないので、気にならないのは、ずれに気づけていないだけの可能性が高いのです。まずは違和感に気づけるようになるよう、ドローン練習とチューナーでの答え合わせを積み重ねていきましょう。</p>
+
+  <h3>トレーニング③ アプリの活用</h3>
+  <p>楽器がなくても、スマホひとつで音感は鍛えられます。通学・通勤や休憩のすきま時間に使えるアプリを2つ紹介します。</p>
+  <div class="drills">
+    <div class="d">
+      <b>ずっしーの音感トレーニング</b>
+      <span>ゲーム感覚で相対音感を鍛えられる無料アプリです。BGMに乗って流れてくる音を聴き取り、鍵盤をタッチして答えていく形式で、ステージを進めるうちに耳コピの土台になる音の聴き分けが身についていきます。</span>
+      <span>▶ <a href="https://apps.apple.com/jp/app/%E3%81%9A%E3%81%A3%E3%81%97%E3%83%BC%E3%81%AE%E9%9F%B3%E6%84%9F%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/id1453413519" target="_blank" rel="noopener">App Store</a>　▶ <a href="https://zussie-piano.com/sample-page/games/" target="_blank" rel="noopener">ブラウザ版（公式サイト）</a></span>
+    </div>
+    <div class="d">
+      <b>Harmonize</b>
+      <span>お手本の音程や和音を聴いて、自分の声や楽器で同じ音を作る無料アプリです。この記事で紹介した「うなりを消して合わせる」感覚を、そのままゲームとして練習できます。基準音に重ねて5度や3度を作るモードもあり、合奏中にピッチを微調整する感覚に近い練習ができます。</span>
+      <span>▶ <a href="https://apps.apple.com/jp/app/pitch-trainer-harmonize/id965614965" target="_blank" rel="noopener">App Store</a>　▶ <a href="https://play.google.com/store/apps/details?id=com.apppppp.harmonize" target="_blank" rel="noopener">Google Play</a></span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= コントロール編 ================= -->
+<section class="wrap end">
+  <div class="sec-eyebrow">ABILITY 2</div>
+  <h2>楽器をコントロールする能力</h2>
+  <div class="h2-rule"></div>
+
+  <p>耳でずれに気づけるようになったら、次はそのずれを楽器で直せる体を作ります。中身は3つ。<span class="accent">チューニング</span>、<span class="accent">音程を上げ下げする技術</span>、そして<span class="accent">楽器の癖の把握</span>です。</p>
+
+  <h3>チューニングは「音色最優先」</h3>
+  <p>チューニングでは、<em>いちばん良い音色で、無理なく吹けるポイント</em>で音を出すことを意識しましょう。口や息で音程を作りにいかず自然体で吹き、そのときのピッチがちょうど良くなるように、楽器側（抜差管など）を調整します。口先で無理に作った音でチューニングを合わせると、その場では合っていても、曲の中で維持できません。無理のあるセッティングで吹き続けると、疲れとともに音色もピッチの調節も崩れてしまいます。</p>
+  <p>とはいえ、いちばん良い音色でニュートラルに吹くというのは、そう簡単なことではありません。楽器を出してすぐに完璧なチューニングを目指すのは難しいでしょう。ウォーミングアップのメニューをある程度こなして体を楽器が吹ける状態に慣らしてから、チューニングB♭だけでなくいろいろな音を吹いて、ニュートラルな吹き方を探りましょう。そのあとにチューニングをすると、うまくいきやすいです。</p>
+
+  <h3>音程を上げ下げする技術</h3>
+  <p>演奏中にピッチを周りに寄せていく調整は、息のスピードや量、アンブシュア、口の中の空間（母音の形）などで行います。楽器によっては、スライドや抜差管、替え指を使った調整も有効です（トロンボーンやトランペットなど、楽器の側で微調整ができる場合は、そちらでの調整を優先しましょう）。</p>
+  <p>楽器ごとにコツが異なるので、同じ楽器の周りの人とノウハウを共有して、自分の調整の引き出しを増やしていきましょう。</p>
+
+  <h3>楽器の癖を把握する</h3>
+  <p>どの楽器にも、構造上どうしても高くなりやすい音、低くなりやすい音があります。こうした癖には、「この楽器のこの音は高くなりやすい」と一般的に知られているものもあれば、楽器の個体差や奏法の違いによって、その人にだけあらわれるものもあります。まずは自分の楽器について一般的に言われていることを知り、そのうえで、自分だけの癖を普段の練習の中で調べて把握していきましょう。癖を知っていれば、その音が来る前から準備ができます。ずれてから直すのではなく、<em>ずれる前に先回りして直す</em>。これができるようになると奏者として一段階レベルが上がり、自分でも上達の実感が得られるはずです。</p>
+
+  <figure style="margin:36px 0 44px;">
+    <img src="brass-harmonics-pitch.png" alt="金管楽器 倍音ごとのピッチの癖の一覧表" style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff;">
+    <figcaption style="margin-top:12px;font-size:12.5px;color:var(--sub);letter-spacing:0.04em;line-height:1.9;">
+      参考：B♭管の金管楽器（トランペット・トロンボーン・ユーフォニアム・テューバ）に共通する、倍音ごとのピッチの癖。ホルンは管の構成が異なるため、傾向が当てはまらない場合があります。
+    </figcaption>
+  </figure>
+
+  <h3>トレーニング方法</h3>
+  <div class="drills">
+    <div class="d">
+      <b>わざと上げ下げする（ピッチベンド）</b>
+      <span>ロングトーンの途中で、運指を変えずに音程をゆっくり上げ下げする練習です。自分の「可動域」がどれくらいあるか、どの操作でピッチが動くかを体に覚え込ませましょう（実際の演奏で使うのは、音色が大きく損なわれない程度の上げ下げにとどめましょう）。</span>
+    </div>
+    <div class="d">
+      <b>ピッチの癖を把握する</b>
+      <span>吹く音域を半音ずつロングトーンし、耳で合わせたあとチューナーで確認して、高め・低めの傾向を覚えておくか、メモしておきましょう。同じ音を何度か吹いたときに高め・低めがコロコロ変わるのか、それとも一貫して高めになるのか。傾向を押さえていくと、自然と調整できるようになってきます。</span>
+    </div>
+    <div class="d">
+      <b>強弱をつけても音程を保つ</b>
+      <span>管楽器はクレッシェンドでピッチが上ずったり、デクレッシェンドでぶら下がったりしがちです。クレッシェンドやデクレッシェンドをしながらロングトーンし、ピッチと音色を保つ練習をすると、曲を安定して吹くのに役立ちます。</span>
+    </div>
+  </div>
+</section>
+
+</body></html>
