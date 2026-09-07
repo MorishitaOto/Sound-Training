@@ -288,6 +288,68 @@
     display:block;font-size:13.5px;color:var(--sub);line-height:1.95;
   }
 
+  /* ---------- harmonics table ---------- */
+  .harm{
+    margin:32px 0 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--card);
+    overflow:hidden;
+  }
+  .harm .hh{
+    padding:13px 20px 12px;
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:14px;letter-spacing:0.1em;
+    color:var(--brass-deep);
+    border-bottom:1px solid var(--line);
+  }
+  .harm .hr{
+    display:grid;
+    grid-template-columns:3.8em minmax(0,1.25fr) minmax(0,1fr) 11.5em;
+    gap:0 16px;
+    align-items:baseline;
+    padding:10px 20px;
+  }
+  .harm .hr.hlabel{
+    padding:8px 20px 7px;
+    font-size:11px;letter-spacing:0.08em;color:var(--sub);
+    background:var(--paper);
+  }
+  .harm .hr + .hr{border-top:1px solid var(--line);}
+  .harm .hn{
+    font-family:'Shippori Mincho',serif;
+    font-weight:600;font-size:13.5px;color:var(--brass);
+    letter-spacing:0.04em;
+  }
+  .harm .hnote{font-size:13px;line-height:1.9;}
+  .harm .hres{font-size:12.5px;color:var(--sub);line-height:1.9;letter-spacing:0.02em;}
+  .harm .htend{font-size:11.5px;line-height:1.9;}
+  .harm .badge{
+    display:inline-block;
+    padding:1px 10px;border-radius:999px;
+    font-weight:700;letter-spacing:0.04em;
+    white-space:nowrap;
+  }
+  .harm .badge.ok{background:#E3EFE6;color:#33684A;}
+  .harm .badge.down{background:#F5E8CE;color:#8C6112;}
+  .harm .badge.up{background:#F7E2DA;color:#A34530;}
+  .harm-note{
+    margin:10px 0 44px;
+    font-size:12px;color:var(--sub);letter-spacing:0.04em;line-height:1.9;
+  }
+  @media (max-width:560px){
+    .harm .hh{padding:12px 14px 11px;}
+    .harm .hr{
+      grid-template-columns:3.4em minmax(0,1fr);
+      gap:2px 12px;
+      padding:10px 14px;
+    }
+    .harm .hr.hlabel{display:none;}
+    .harm .hnote{grid-column:2;}
+    .harm .hres{grid-column:2;}
+    .harm .htend{grid-column:2;}
+  }
+
   section{padding:4px 0;}
   .end{padding-bottom:100px;}
 
@@ -319,9 +381,10 @@
     <ul>
       <li>音程合わせは「だいたい同じ場所に集合する → 聴き比べて寄せる」の2ステップ</li>
       <li>必要な能力は「音感」と「楽器をコントロールする能力」の2つ</li>
-      <li>合奏で重要になる音感の中心は相対音感。歌う・ドローン練習・チューナーの使い方で鍛える</li>
-      <li>チューニングは音色最優先。いちばん良い音色がなるポイントで吹いて、楽器側を合わせる</li>
-      <li>ピッチコントロールの練習は、わざと上げ下げして自分の可動域と楽器の癖を知ることから</li>
+      <li>ステップ1を支えるのが相対音感、ステップ2を支えるのがうなりを聞く力。歌う・ドローン練習・アプリで鍛える</li>
+      <li>「合っている」という思い込みがいちばん危険。耳で合わせて、チューナーで答え合わせをする</li>
+      <li>チューニングは音色最優先。いちばん良い音色が鳴るポイントで吹いて、楽器側を合わせる</li>
+      <li>自分の楽器のピッチの癖を把握して、ずれる前に先回りして直せるようになる</li>
     </ul>
   </div>
 </header>
@@ -435,12 +498,155 @@
   <h3>楽器の癖を把握する</h3>
   <p>どの楽器にも、構造上どうしても高くなりやすい音、低くなりやすい音があります。こうした癖には、「この楽器のこの音は高くなりやすい」と一般的に知られているものもあれば、楽器の個体差や奏法の違いによって、その人にだけあらわれるものもあります。まずは自分の楽器について一般的に言われていることを知り、そのうえで、自分だけの癖を普段の練習の中で調べて把握していきましょう。癖を知っていれば、その音が来る前から準備ができます。ずれてから直すのではなく、<em>ずれる前に先回りして直す</em>。これができるようになると奏者として一段階レベルが上がり、自分でも上達の実感が得られるはずです。</p>
 
-  <figure style="margin:36px 0 44px;">
-    <img src="brass-harmonics-pitch.png" alt="金管楽器 倍音ごとのピッチの癖の一覧表" style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff;">
-    <figcaption style="margin-top:12px;font-size:12.5px;color:var(--sub);letter-spacing:0.04em;line-height:1.9;">
-      参考：B♭管の金管楽器（トランペット・トロンボーン・ユーフォニアム・テューバ）に共通する、倍音ごとのピッチの癖。ホルンは管の構成が異なるため、傾向が当てはまらない場合があります。
-    </figcaption>
-  </figure>
+  <div class="harm">
+    <div class="hh">参考：B♭管金管楽器 倍音ごとのピッチの癖</div>
+    <div class="hr hlabel"><span></span><span>音域</span><span>そのまま吹くと</span><span>対処</span></div>
+    <div class="hr"><span class="hn">2倍音</span><span class="hnote">Low B♭（とそこから下の音）</span><span class="hres">ほぼ正確</span><span class="htend"><span class="badge ok">調整不要</span></span></div>
+    <div class="hr"><span class="hn">3倍音</span><span class="hnote">Low B♭の5度上のF（とそこから下）</span><span class="hres">わずかに高い（約 +5セント）</span><span class="htend"><span class="badge down">↓ ごくわずか低めへ</span></span></div>
+    <div class="hr"><span class="hn">4倍音</span><span class="hnote">Tuning B♭（とそこから下）</span><span class="hres">ほぼ正確</span><span class="htend"><span class="badge ok">調整不要</span></span></div>
+    <div class="hr"><span class="hn">5倍音</span><span class="hnote">Tuning B♭の3度上のD（とそこから下）</span><span class="hres">低め（理論値 −14セント）</span><span class="htend"><span class="badge up">↑ やや高めへ</span></span></div>
+    <div class="hr"><span class="hn">6倍音</span><span class="hnote">Tuning B♭の5度上のF（とそこから下）</span><span class="hres">高い（約 +20セント）</span><span class="htend"><span class="badge down">↓ 低めへ（替え指等）</span></span></div>
+    <div class="hr"><span class="hn">7倍音</span><span class="hnote">その上のA♭（とそこから下）</span><span class="hres">非常に低い（約 −30セント）</span><span class="htend"><span class="badge up">↑ 大幅に高めへ</span></span></div>
+    <div class="hr"><span class="hn">8倍音</span><span class="hnote">High B♭（とそこから下）</span><span class="hres">ほぼ正確</span><span class="htend"><span class="badge ok">調整不要</span></span></div>
+  </div>
+  <p class="harm-note">※ Low B♭ = Tuning B♭の1オクターブ下、High B♭ = 1オクターブ上。トランペット・トロンボーン・ユーフォニアム・テューバが対象で、ホルンは管の構成が異なるため当てはまらない場合があります。実際のずれ幅は楽器の設計により差があります。</p>
+
+  <div class="summary">
+    <div class="t">
+      <svg width="15" height="18" viewBox="0 0 15 18" aria-hidden="true"><path d="M5 1.2v10.9a3.4 3.4 0 1 0 1.3 2.65V4.9L13 3.3v6a3.4 3.4 0 1 0 1.3 2.65V.2L5 2.3Z" fill="#A8842F"></path></svg>
+      この記事のポイント
+    </div>
+    <ul>
+      <li>音程合わせは「だいたい同じ場所に集合する → 聴き比べて寄せる」の2ステップ</li>
+      <li>必要な能力は「音感」と「楽器をコントロールする能力」の2つ</li>
+      <li>ステップ1を支えるのが相対音感、ステップ2を支えるのがうなりを聞く力。歌う・ドローン練習・アプリで鍛える</li>
+      <li>「合っている」という思い込みがいちばん危険。耳で合わせて、チューナーで答え合わせをする</li>
+      <li>チューニングは音色最優先。いちばん良い音色が鳴るポイントで吹いて、楽器側を合わせる</li>
+      <li>自分の楽器のピッチの癖を把握して、ずれる前に先回りして直せるようになる</li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= 音程の合わせ方 ================= -->
+<section class="wrap">
+  <div class="sec-eyebrow">STEP</div>
+  <h2>音程が合うまでの2つのステップ</h2>
+  <div class="h2-rule"></div>
+
+  <p>「音程を合わせる」とひとことで言いますが、実際にやっていることは2つのステップに分けられます。</p>
+
+  <div class="stages">
+    <div class="st">
+      <span class="num">1</span>
+      <span class="txt">
+        <b>だいたい同じ場所に集合する</b>
+        <span>まず全員が音感を頼りに、大きく外れていない場所に集まる</span>
+      </span>
+    </div>
+    <div class="st">
+      <span class="num">2</span>
+      <span class="txt">
+        <b>周りの音と自分の音を聴き比べて、寄せる</b>
+        <span>高いのか低いのか、響きが濁っているのか溶けているのかを聴き取って、合う場所へ寄せていく</span></span></div></div>
+
+  <h3>ステップ1の難しさは、楽器によって違う</h3>
+  <p>実は、この最初の「集合」の難易度は、楽器によってかなり違います。</p>
+  <p>金管楽器やフルートは、アンブシュアや息の向き、楽器の角度、トロンボーンならスライドの位置と、奏者側の自由度がとても高い楽器です。自由度が高いということは、表現の幅が広い一方で、<em>気をつけないと無自覚のうちに大きく外れてしまう</em>ということでもあります。チューナー中央の2本の線に収まらないほどずれることも、まったく珍しくありません。だからこそ、これらの楽器は<em>吹く前に出す音を頭の中でイメージする</em>意識 (前回の記事のSong and Wind の考え方)がないと、そもそもステップ 1 の「集合」ができません。</p>
+  <p>一方、オーボエやクラリネット、サックスのように、指が合っていればある程度正しい音程が鳴りやすい楽器もあります。これらの楽器では、ステップ 1 への意識は少なめでも形になる一方で、<em>「何もしなくてもだいたい合う」ことに甘えて、聴き比べて調整する習慣を持たないままだと、ステップ 2 がまったくできない奏者になってしまいます</em>。正しいピッチの周りに集合しやすい楽器の人ほど、意識的に耳を使い、周りに寄せる練習が必要だと考えてください。</p><p><br>では、このステップを踏むために<b>必要な能力</b>は何でしょうか。大きく2つに分けられます。</p>
+  <p>1つめは<em>音感</em>。ずれに気づけなければ、直しようがありません。2つめは<em>楽器をコントロールする能力</em>です。管楽器は同じ運指でも、息の入れ方やアンブシュアで音程が変わる楽器です。耳で「高い」と分かっても、楽器で寄せられなければ音は合いません。ここからは、それぞれの中身と鍛え方を順番に見ていきます。</p>
+</section>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= 音感編 ================= -->
+<section class="wrap">
+  <div class="sec-eyebrow">ABILITY 1</div>
+  <h2>音感</h2>
+  <div class="h2-rule"></div>
+
+  <h3>中心は「相対音感」と「うなりを聞く力」</h3>
+  <p>まず、ステップ1「だいたい同じ場所に集合する」を支えるのが<em>相対音感</em>です。相対音感とは、音を単独で聞いて階名を当てる絶対音感とは別物で、基準の音に対して高いか低いか、3度や5度といった音程（＝音と音の幅）など、音どうしの「関係」を捉える感覚のことです。習得に幼少期の訓練が必要とされる絶対音感と違い、<em>相対音感は大人になってからでも、練習した分だけ鍛えられる</em>と言われています。鍛える価値のある音感です。</p>
+  <p>そして、ステップ2の「聴き比べて寄せる」を達成するために必要な能力が、うなりを聞く力です。音程がずれていると、「ワンワンワン」という音の揺れ＝<em>うなり</em>が聞こえます。これは2つの音の周波数がずれているときに起こる物理現象で、ずれが大きいほど速く、合ってくるほどゆっくりになり、ぴったり合うと消えます。この揺れに気づけるようになると、うなりを頼りに、合う場所まで正確に寄せていけるようになります。</p>
+
+  <h3>トレーニング① 歌ってから、吹く</h3>
+  <p>最初の一歩は、実際に声に出して歌うことです。これから吹くフレーズを、まず声で歌ってみて、音程のイメージを作ることで、<em>楽器で吹いた音が合っていない時に違和感を持てる</em>ようになります。イメージが正確になるほど、最初の音が「だいたい合っている場所」に着地するようになります。</p>
+
+  <div class="loop">
+    <span class="step">基準音を聴く</span>
+    <span class="arrow"></span>
+    <span class="step">出す音を頭の中で（or 声で）歌う</span>
+    <span class="arrow"></span>
+    <span class="step">吹く</span>
+    <span class="arrow"></span>
+    <span class="step">うなりを聴いて合わせる</span>
+    <span class="back">↻ 繰り返して耳に刻む</span>
+  </div>
+
+  <h3>トレーニング② ドローン練習とアプリの活用</h3>
+  <p>チューナーやハーモニーディレクター、スマホのアプリなどで基準音（ドローン）を鳴らしっぱなしにして、その上でロングトーンや音階を吹きます。</p>
+  <p>自分の音と基準音を聴き比べて<em>高いのか低いのかを判断し、基準音に合うように調整する</em>ことを常に意識しましょう。判断がつかないときは、音程をどちらかにほんの少し動かしてみてください。うなりがゆっくりになればその方向が正解、速くなれば逆方向です。向きが分かったら、あとはうなりが消える方向へ少しずつ動かして調整します。「ずれの向きを判断する → 消える方向に動かす」。この一連の流れを、<em>なるべく短い時間でできるように</em>練習しましょう。合奏では、これを演奏しながら瞬時にやることになります。</p>
+  <p>ユニゾンで合わせられるようになったら、基準音に対して5度上、3度上など、違う音を当ててみてください。合っているときの響きをよく聴いて、その感覚を覚えて、いつでも再現できるようにしていきましょう。</p>
+
+  <h3>補足：チューナーの使い方</h3>
+  <p>ドローン練習でチューナーを使うときは、順番が大切です。先にメーターを見て針に合わせるのではなく、<em>まず耳で合わせて、そのあとにチューナーで確認する</em>ようにしましょう。「合ったと思ったけど少し高かった」と分かったら、自分の感覚のほうを修正しましょう。</p>
+  <p>音感がまだ育っていない段階では、チューナーを積極的に使ってください。ずれた音を「合っている」と思い込んで練習すると、その状態が定着してしまいます。耳で合わせたつもりの音をチューナーで確かめて、感覚と現実のずれを埋めていきましょう。自身に音感が正しく身についているかを確認する一つの目安として、普段の合奏で「音程が濁って気持ち悪いな」と感じる場面がどれくらいあるかを思い出してみてください。その回数が少ない人ほど音感のトレーニングが必要です。合奏で誰も彼もが完璧に合っていることはまずないので、気にならないのは、ずれに気づけていないだけの可能性が高いのです。まずは違和感に気づけるようになるよう、ドローン練習とチューナーでの答え合わせを積み重ねていきましょう。</p>
+
+  <h3>トレーニング③ アプリの活用</h3>
+  <p>楽器がなくても、スマホひとつで音感は鍛えられます。通学・通勤や休憩のすきま時間に使えるアプリを2つ紹介します。</p>
+  <div class="drills">
+    <div class="d">
+      <b>ずっしーの音感トレーニング</b>
+      <span>ゲーム感覚で相対音感を鍛えられる無料アプリです。BGMに乗って流れてくる音を聴き取り、鍵盤をタッチして答えていく形式で、ステージを進めるうちに耳コピの土台になる音の聴き分けが身についていきます。</span>
+      <span>▶ <a href="https://apps.apple.com/jp/app/%E3%81%9A%E3%81%A3%E3%81%97%E3%83%BC%E3%81%AE%E9%9F%B3%E6%84%9F%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/id1453413519" target="_blank" rel="noopener">App Store</a>　▶ <a href="https://zussie-piano.com/sample-page/games/" target="_blank" rel="noopener">ブラウザ版（公式サイト）</a></span>
+    </div>
+    <div class="d">
+      <b>Harmonize</b>
+      <span>お手本の音程や和音を聴いて、自分の声や楽器で同じ音を作る無料アプリです。この記事で紹介した「うなりを消して合わせる」感覚を、そのままゲームとして練習できます。基準音に重ねて5度や3度を作るモードもあり、合奏中にピッチを微調整する感覚に近い練習ができます。</span>
+      <span>▶ <a href="https://apps.apple.com/jp/app/pitch-trainer-harmonize/id965614965" target="_blank" rel="noopener">App Store</a>　▶ <a href="https://play.google.com/store/apps/details?id=com.apppppp.harmonize" target="_blank" rel="noopener">Google Play</a></span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="divider" role="presentation"><span></span></div>
+</div>
+
+<!-- ================= コントロール編 ================= -->
+<section class="wrap end">
+  <div class="sec-eyebrow">ABILITY 2</div>
+  <h2>楽器をコントロールする能力</h2>
+  <div class="h2-rule"></div>
+
+  <p>耳でずれに気づけるようになったら、次はそのずれを楽器で直せる体を作ります。中身は3つ。<span class="accent">チューニング</span>、<span class="accent">音程を上げ下げする技術</span>、そして<span class="accent">楽器の癖の把握</span>です。</p>
+
+  <h3>チューニングは「音色最優先」</h3>
+  <p>チューニングでは、<em>いちばん良い音色で、無理なく吹けるポイント</em>で音を出すことを意識しましょう。口や息で音程を作りにいかず自然体で吹き、そのときのピッチがちょうど良くなるように、楽器側（抜差管など）を調整します。口先で無理に作った音でチューニングを合わせると、その場では合っていても、曲の中で維持できません。無理のあるセッティングで吹き続けると、疲れとともに音色もピッチの調節も崩れてしまいます。</p>
+  <p>とはいえ、いちばん良い音色でニュートラルに吹くというのは、そう簡単なことではありません。楽器を出してすぐに完璧なチューニングを目指すのは難しいでしょう。ウォーミングアップのメニューをある程度こなして体を楽器が吹ける状態に慣らしてから、チューニングB♭だけでなくいろいろな音を吹いて、ニュートラルな吹き方を探りましょう。そのあとにチューニングをすると、うまくいきやすいです。</p>
+
+  <h3>音程を上げ下げする技術</h3>
+  <p>演奏中にピッチを周りに寄せていく調整は、息のスピードや量、アンブシュア、口の中の空間（母音の形）などで行います。楽器によっては、スライドや抜差管、替え指を使った調整も有効です（トロンボーンやトランペットなど、楽器の側で微調整ができる場合は、そちらでの調整を優先しましょう）。</p>
+  <p>楽器ごとにコツが異なるので、同じ楽器の周りの人とノウハウを共有して、自分の調整の引き出しを増やしていきましょう。</p>
+
+  <h3>楽器の癖を把握する</h3>
+  <p>どの楽器にも、構造上どうしても高くなりやすい音、低くなりやすい音があります。こうした癖には、「この楽器のこの音は高くなりやすい」と一般的に知られているものもあれば、楽器の個体差や奏法の違いによって、その人にだけあらわれるものもあります。まずは自分の楽器について一般的に言われていることを知り、そのうえで、自分だけの癖を普段の練習の中で調べて把握していきましょう。癖を知っていれば、その音が来る前から準備ができます。ずれてから直すのではなく、<em>ずれる前に先回りして直す</em>。これができるようになると奏者として一段階レベルが上がり、自分でも上達の実感が得られるはずです。</p>
+
+  <div class="harm">
+    <div class="hh">参考：B♭管金管楽器 倍音ごとのピッチの癖</div>
+    <div class="hr"><span class="hn">2倍音</span><span class="hnote">Low B♭（とそこから下の音）</span><span class="htend">ほぼ正確：調整不要（チューニングの基準に）</span></div>
+    <div class="hr"><span class="hn">3倍音</span><span class="hnote">Low B♭の5度上のF（とそこから下）</span><span class="htend">わずかに高い（約+5セント）：<b>ごくわずか低めへ</b></span></div>
+    <div class="hr"><span class="hn">4倍音</span><span class="hnote">Tuning B♭（とそこから下）</span><span class="htend">ほぼ正確：調整不要</span></div>
+    <div class="hr"><span class="hn">5倍音</span><span class="hnote">Tuning B♭の3度上のD（とそこから下）</span><span class="htend">低め（理論値−14セント）：<b>やや高めへ</b></span></div>
+    <div class="hr"><span class="hn">6倍音</span><span class="hnote">Tuning B♭の5度上のF（とそこから下）</span><span class="htend">高い（約+20セント）：<b>低めへ・替え指やポジションで調整</b></span></div>
+    <div class="hr"><span class="hn">7倍音</span><span class="hnote">その上のA♭（とそこから下）</span><span class="htend">非常に低い（約−30セント）：<b>大幅に高めへ</b></span></div>
+    <div class="hr"><span class="hn">8倍音</span><span class="hnote">High B♭（とそこから下）</span><span class="htend">ほぼ正確：調整不要</span></div>
+  </div>
+  <p class="harm-note">※ Low B♭ = Tuning B♭の1オクターブ下、High B♭ = 1オクターブ上。トランペット・トロンボーン・ユーフォニアム・テューバが対象で、ホルンは管の構成が異なるため当てはまらない場合があります。実際のずれ幅は楽器の設計により差があります。</p>
 
   <h3>トレーニング方法</h3>
   <div class="drills">
