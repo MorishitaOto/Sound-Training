@@ -47,22 +47,21 @@
   a{color:inherit;}
   :focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
 
-  /* ---------- hero ---------- */
-  header{padding:104px 0 44px;}
+  /* ---------- topbar ---------- */
+  header{padding:36px 0 0;}
   .sitename{
+    display:inline-flex;align-items:center;gap:12px;
     font-family:'Shippori Mincho',serif;
-    font-weight:500;
-    font-size:clamp(26px,6.4vw,38px);
-    line-height:1.5;
-    letter-spacing:0.22em;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:0.3em;
     text-transform:uppercase;
+    color:var(--brass-deep);
   }
-  .sitename::after{
+  .sitename::before{
     content:"";display:block;
-    width:44px;height:2px;background:var(--brass);
-    margin-top:22px;
+    width:22px;height:2px;background:var(--brass);
   }
-  .lede{margin-top:24px;color:var(--sub);font-size:15px;line-height:2.2;}
 
   /* ---------- divider ---------- */
   .divider{margin:64px auto;display:flex;align-items:center;gap:20px;}
@@ -133,7 +132,7 @@
   }
   @media (max-width:480px){
     body{font-size:15px;}
-    header{padding:68px 0 34px;}
+    header{padding:26px 0 0;}
     .divider{margin:52px auto;}
     .entry{flex-wrap:wrap;gap:0;padding:18px 2px 18px;}
     .entry .date{min-width:0;flex:1 1 auto;line-height:1.9;}
@@ -147,14 +146,9 @@
 
 <header class="wrap">
   <h1 class="sitename">Practice Notes</h1>
-  <p class="lede">合奏の基礎練習で話したことを、あとから読み返せるように書き留めています。楽器を問わず使える話が中心です。</p>
 </header>
 
-<div class="wrap">
-  <div class="divider" role="presentation"><span></span></div>
-</div>
-
-<main class="wrap">
+<main class="wrap" style="padding-top:110px;">
   <div class="sec-eyebrow">ARCHIVE</div>
   <h2>記事一覧</h2>
   <div class="h2-rule"></div>
