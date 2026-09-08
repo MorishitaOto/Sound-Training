@@ -553,4 +553,29 @@
   </div>
 </section>
 
+<!-- ▼ アクセス解析（GoatCounter） -->
+<script data-goatcounter="https://morishitaoto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+/* どこまで読まれたかの計測: 25/50/75/90% 到達をイベントとして送信 */
+(function(){
+  var sent = {};
+  function send(m){
+    if (sent[m] || !window.goatcounter || !window.goatcounter.count) return;
+    sent[m] = 1;
+    window.goatcounter.count({
+      path: location.pathname + 'scroll-' + m,
+      title: document.title + ' (' + m + '%到達)',
+      event: true
+    });
+  }
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var depth = (h.scrollTop + window.innerHeight) / h.scrollHeight * 100;
+    [25,50,75,90].forEach(function(m){ if (depth >= m) send(m); });
+  }, {passive:true});
+})();
+</script>
+<!-- ▲ -->
+
+
 </body></html>
